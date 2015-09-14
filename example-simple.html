@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Angular + Ionic Image Viewer</title>
+	<link href="style.css" rel="stylesheet">
+</head>
+<body ng-app="app" ng-controller="IndexCtrl" ng-cloak>
+<div class="header">
+	<div class="title">AngularJs Image Viewer</div>
+	<div class="subtitle">Good to iOS</div>
+</div>
+<div class="img-list">
+	<div class="row" ng-repeat="(groupKey, imgGroup) in imgGroups">
+		<div class="col-33" ng-repeat="(imgKey, img) in imgGroup">
+			<img src="" ng-src="{{ img }}" class="img" ng-click="openFullImg(groupKey, imgKey)">
+		</div>
+	</div>
+</div>
+<div class="full-image-view ng-hide" ng-show="fullViewVisible" ng-click="closeFullImg($event)">
+	<div class="view">
+		<div ng-image-viewer imgs="imgs" current="currentImgId"></div>
+	</div>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+<script src="ngImageViewerDirective.js"></script>
+<script type="text/javascript">
+	(function () {
+		var app;
+		app = angular.module('app', ['ngImageViewer']);
+		app.controller('IndexCtrl', function ($scope) {
+			$scope.fullViewVisible = false;
+			$scope.imgs = ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg', 'img/5.jpg', 'img/6.jpg', 'img/7.jpg'];
+			$scope.imgGroups = undefined;
+			$scope.currentImgId = undefined;
+
+			$scope.getImageKey = function (groupKey, photoKey) {
+				return groupKey * 3 + photoKey;
+			};
+
+			$scope.separateByGroups = function (imgs) {
+				return imgs.reduce(function (result, item) {
+					var lastItemKey, nextItemKey, key;
+					lastItemKey = result.length - 1;
+					nextItemKey = result.length;
+					key = lastItemKey;
+					if (nextItemKey == 0 || result[lastItemKey].length == 3) {
+						result[nextItemKey] = [];
+						key = nextItemKey;
+					}
+					result[key].push(item);
+					return result;
+				}, []);
+			};
+
+			$scope.openFullImg = function (groupKey, imgKey) {
+				$scope.fullViewVisible = true;
+				$scope.currentImgId = $scope.getImageKey(groupKey, imgKey);
+			};
+
+			$scope.closeFullImg = function (evt) {
+				if (!angular.element(evt.target).hasClass('full-image-view')) {
+					return false;
+				}
+				$scope.fullViewVisible = false;
+			};
+
+			$scope.imgGroups = $scope.separateByGroups($scope.imgs);
+			$scope.openFullImg(0, 0);
+		});
+	})();
+</script>
+</body>
+</html>

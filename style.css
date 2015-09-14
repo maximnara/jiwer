@@ -1,0 +1,81 @@
+body {
+	width: 1024px;
+	margin: 70px auto;
+	font-family: 'Hoefler Text';
+}
+.img {
+	max-width: 200px;
+	max-height: 300px;
+	margin: 20px auto;
+	display: block;
+}
+.full-image-view {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.7);
+}
+.full-image-view .view {
+	width: 80%;
+	height: 80%;
+	position: relative;
+	margin: 0 auto;
+	background-color: transparent;
+	overflow: visible;
+}
+.full-image-view .view img {
+	max-width: 100%;
+	margin: 100px auto;
+	display: block;
+}
+.img-list {
+	margin-top: 20px;
+}
+.header {
+	width: 310px;
+	padding-top: 10px;
+	margin: 0 auto;
+	text-align: center;
+}
+.m-header-ionic {
+	width: 400px;
+}
+.header .title {
+	font-size: 30px;
+}
+.header .subtitle {
+	text-align: right;
+}
+.image-viewer-modal {
+	width: 80%;
+	left: 10%;
+	top: 10%;
+	height: 80%;
+	background-color: transparent;
+	overflow: visible;
+}
+.ng-hide {
+	display: none;
+}
+/** For non-ionic usage **/
+.row {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -moz-flex;
+	display: -ms-flexbox;
+	display: flex;
+	padding: 5px;
+	width: 100%;
+}
+.col-33 {
+	-webkit-box-flex: 0;
+	-webkit-flex: 0 0 33.3333%;
+	-moz-box-flex: 0;
+	-moz-flex: 0 0 33.3333%;
+	-ms-flex: 0 0 33.3333%;
+	flex: 0 0 33.3333%;
+	max-width: 33.3333%;
+}
