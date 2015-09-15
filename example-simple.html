@@ -6,6 +6,7 @@
 	<link href="style.css" rel="stylesheet">
 </head>
 <body ng-app="app" ng-controller="IndexCtrl" ng-cloak>
+<div class="fork-me"></div>
 <div class="header">
 	<div class="title">AngularJs Image Viewer</div>
 	<div class="subtitle">Good to iOS</div>
@@ -29,7 +30,7 @@
 	(function () {
 		var app;
 		app = angular.module('app', ['ngImageViewer']);
-		app.controller('IndexCtrl', function ($scope) {
+		app.controller('IndexCtrl', function ($scope, $timeout) {
 			$scope.fullViewVisible = false;
 			$scope.imgs = ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg', 'img/5.jpg', 'img/6.jpg', 'img/7.jpg'];
 			$scope.imgGroups = undefined;
@@ -67,7 +68,9 @@
 			};
 
 			$scope.imgGroups = $scope.separateByGroups($scope.imgs);
-			$scope.openFullImg(0, 0);
+			$timeout(function () {
+				$scope.openFullImg(0, 0);
+			}, 300);
 		});
 	})();
 </script>

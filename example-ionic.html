@@ -7,7 +7,7 @@
 	<link href="style.css" rel="stylesheet">
 </head>
 <body ng-app="app" ng-controller="IndexCtrl" ng-cloak>
-
+<div class="fork-me"></div>
 <div class="header m-header-ionic">
 	<div class="title">AngularJs + Ionic Image Viewer</div>
 	<div class="subtitle">Good to iOS</div>
@@ -26,7 +26,7 @@
 	(function () {
 		var app;
 		app = angular.module('app', ['ngImageViewer', 'ionic']);
-		app.controller('IndexCtrl', function ($scope, $ionicModal) {
+		app.controller('IndexCtrl', function ($scope, $timeout, $ionicModal) {
 			$scope.imgs = ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg', 'img/5.jpg', 'img/6.jpg', 'img/7.jpg'];
 			$scope.imgGroups = undefined;
 			$scope.currentImgId = undefined;
@@ -71,7 +71,9 @@
 							return false;
 						}
 						$scope.fullViewModal = modal;
-						$scope.openFullImg(0, 0);
+						$timeout(function () {
+							$scope.openFullImg(0, 0);
+						}, 300);
 					});
 		});
 	})();

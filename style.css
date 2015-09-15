@@ -33,6 +33,15 @@ body {
 .img-list {
 	margin-top: 20px;
 }
+.fork-me {
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: url('img/fork-me.png');
+	background-size: cover;
+}
 .header {
 	width: 310px;
 	padding-top: 10px;
