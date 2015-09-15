@@ -22,7 +22,6 @@
 						to: function (x) {
 							element.css({
 								transform: 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, ' + x + ', 0, 0, 1)',
-								'z-index': 99999,
 								'-webkit-transform': 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, ' + x + ', 0, 0, 1)',
 								'-ms-transform': 'matrix(1, 0, 0, 1, ' + x + ', 0)',
 								'transition': ''
@@ -32,6 +31,7 @@
 							element.css({
 								'transform':'translate3d(0,0,0)',
 								'-webkit-transform': 'translate3d(0,0,0)',
+								'-ms-transform': 'translate3d(0,0,0)',
 								'transition': '0.5s ease all'
 							});
 						},
@@ -39,6 +39,7 @@
 							element.css({
 								'transform':'translate3d(130%,0,0)',
 								'-webkit-transform': 'translate3d(130%,0,0)',
+								'-ms-transform': 'translate3d(130%,0,0)',
 								'transition': '0.5s ease all'
 							});
 						},
@@ -46,6 +47,7 @@
 							element.css({
 								'transform':'translate3d(-130%,0,0)',
 								'-webkit-transform': 'translate3d(-130%,0,0)',
+								'-ms-transform': 'translate3d(-130%,0,0)',
 								'transition': '0.5s ease all'
 							});
 						}
